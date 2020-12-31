@@ -1,0 +1,12 @@
+---
+general:
+    user_name: "valero3@hotmail.com"
+    password: "None"
+
+importData:
+    backup_dir: "/Users/xavier/Documents/pythonFiles/activities"
+    format: ["fit", "json_summary"]  #["json_summary","json_details", "gpx", "tcx"], "fit"
+    ignore_errors: False
+    max_retries: 7
+    log_level: "INFO" #DEBUG, INFO, WARNING, ERROR
+
