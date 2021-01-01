@@ -20,9 +20,11 @@ config.yml => yaml file with the required parameters:
 import argparse
 from garminexport.incremental_backup import incremental_backup
 from garminexport.logging_config import LOG_LEVELS
-from sport
 import yaml
 import logging
+# TODO: fix import
+from ..data_management import import_data
+
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s [%(levelname)s] %(message)s")
 log = logging.getLogger(__name__)
@@ -60,12 +62,12 @@ def main():
 
     if args.password is not None:
         cfg['general']['password'] = args.password
-        print("password by CLI")
-    else:
-        print(cfg['general']['password'])
+        #print("password by CLI")
+    #else:
+     #   print(cfg['general']['password'])
 
     logging.root.setLevel(LOG_LEVELS[cfg['importData']['log_level']])
-"""
+
     try:
         import_data(username=cfg['general']['user_name'],
                        password=cfg['general']['password'],
@@ -76,4 +78,3 @@ def main():
 
     except Exception as e:
         log.error("failed with exception: {}".format(e))
-"""
