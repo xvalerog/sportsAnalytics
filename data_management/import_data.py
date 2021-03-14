@@ -2,8 +2,8 @@
 """
 Module that imports the data from your Garmin device to a given folder of your computer
 Required:
-garminexport  => pip install garminexport
-config.yml => yaml file with the required parameters:
+- garminexport  => pip install garminexport
+- config.yml => yaml file with the required parameters:
 
     general:
         user_name: "<Garmin account email>"
@@ -52,4 +52,5 @@ def main():
         log.error("failed with exception: {}".format(e))
 
 
-main()
+if __name__ == '__main__':
+    main()

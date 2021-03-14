@@ -20,9 +20,9 @@ config.yml => yaml file with the required parameters:
 import argparse
 from garminexport.incremental_backup import incremental_backup
 from garminexport.logging_config import LOG_LEVELS
-from sport
 import yaml
 import logging
+
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s [%(levelname)s] %(message)s")
 log = logging.getLogger(__name__)
@@ -44,7 +44,7 @@ def parse_args() -> argparse.Namespace:
             "be imported."))
     # positional args
     parser.add_argument(
-        "config", metavar="<config>", type=str, help="Config file in yml format")
+        "--config", metavar="<config>", type=str, help="Config file in yml format")
     # optional args
     parser.add_argument(
         "--password", type=str, help="Account password.")
@@ -60,20 +60,23 @@ def main():
 
     if args.password is not None:
         cfg['general']['password'] = args.password
-        print("password by CLI")
-    else:
-        print(cfg['general']['password'])
+        #print("password by CLI")
+    #else:
+     #   print(cfg['general']['password'])
 
     logging.root.setLevel(LOG_LEVELS[cfg['importData']['log_level']])
-"""
+
     try:
-        import_data(username=cfg['general']['user_name'],
-                       password=cfg['general']['password'],
-                       backup_dir=cfg['importData']['backup_dir'],
-                       export_formats=cfg['importData']['format'],
-                       ignore_errors=cfg['importData']['ignore_errors'],
-                       max_retries=cfg['importData']['max_retries'])
+        incremental_backup(username=cfg['general']['user_name'],
+                           password=cfg['general']['password'],
+                           backup_dir=cfg['importData']['backup_dir'],
+                           export_formats=cfg['importData']['format'],
+                           ignore_errors=cfg['importData']['ignore_errors'],
+                           max_retries=cfg['importData']['max_retries'])
+        print("process done")
 
     except Exception as e:
         log.error("failed with exception: {}".format(e))
-"""
+
+if __name__ == '__main__':
+    main()

@@ -10,3 +10,12 @@ importData:
     max_retries: 7
     log_level: "INFO" #DEBUG, INFO, WARNING, ERROR
 
+exportData:
+    timezone: "Europe/Paris"
+    input_dir: "/Users/xavier/Documents/pythonFiles/activities"
+    export_dir: "//Users/xavier/Documents/pythonFiles/activities/"
+    export_fields: ["timestamp", "distance", "altitude", "speed", "heart_rate", "cadence"]
+           # Required field: "timestamp"
+           # Optional fields: ["position_lat", "position_long", "distance", "altitude", "speed", "vertical_oscillation",
+           #  "stance_time_percent", "stance_time", "vertical_ratio", "stance_time_balance", "step_length", "unknown_87",
+           #  "heart_rate", "cadence", "temperature", "activity_type", "fractional_cadence"]
